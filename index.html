@@ -193,7 +193,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-11 10:19:47 / 修改时间：10:22:23" itemprop="dateCreated datePublished" datetime="2021-05-11T10:19:47+08:00">2021-05-11</time>
+              <time title="创建时间：2021-05-11 10:19:47 / 修改时间：10:24:15" itemprop="dateCreated datePublished" datetime="2021-05-11T10:19:47+08:00">2021-05-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,26 +265,14 @@
 <blockquote>
 <p>React Fiber把更新过程碎片化，执行过程如下面的图所示，每执行完一段更新过程，就把控制权交还给React负责任务协调的模块，看看有没有其他紧急任务要做，如果没有就继续去更新，如果有紧急任务，那就去做紧急任务。</p>
 </blockquote>
-<p>维护每一个分片的数据结构，就是Fiber。</p>
-<h5 id="Fiber的调度过程分为以下两个阶段："><a href="#Fiber的调度过程分为以下两个阶段：" class="headerlink" title="Fiber的调度过程分为以下两个阶段："></a>Fiber的调度过程分为以下两个阶段：</h5><blockquote>
-<p><strong>render/reconciliation阶段</strong> ===&gt; 里面的所有生命周期函数都可能被执行多次，所以尽量保证状态不变</p>
-</blockquote>
-<ul>
-<li>componentWillMount</li>
-<li>componentWillReceiveProps</li>
-<li>shouldComponentUpdate</li>
-<li>componentWillUpdate</li>
-</ul>
-<blockquote>
-<p><strong>Commit阶段</strong> ===&gt; 不能被打断，只会执行一次</p>
-</blockquote>
-<ul>
-<li>componentDidMount</li>
-<li>componentDidUpdate</li>
-<li>compoenntWillunmount</li>
-</ul>
-<p><strong>总结</strong>：新的<code>Fiber</code> 分片处理任务，当有紧急任务的时候，可以去优先处理紧急任务然后再回来调用</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/11/react-fiber/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -328,7 +316,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-05-11 10:18:17 / 修改时间：10:20:22" itemprop="dateCreated datePublished" datetime="2021-05-11T10:18:17+08:00">2021-05-11</time>
+              <time title="创建时间：2021-05-11 10:18:17 / 修改时间：10:24:21" itemprop="dateCreated datePublished" datetime="2021-05-11T10:18:17+08:00">2021-05-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -388,13 +376,14 @@
       
           <p><strong>假设Greeting组件，它支持定义成类和函数两种性质。</strong><br>如果 <code>Greeting</code> 是一个函数，React 需要调用它。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Greeting.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Greeting</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// React 内部</span></span><br><span class="line"><span class="keyword">const</span> result = Greeting(props); <span class="comment">// &lt;p&gt;Hello&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果 <code>Greeting</code> 是一个类，React 需要先将其实例化，再调用刚才生成实例的 <code>render</code> 方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Greeting.js</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeting</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// React 内部</span></span><br><span class="line"><span class="keyword">const</span> instance = <span class="keyword">new</span> Greeting(props); <span class="comment">// Greeting &#123;&#125;</span></span><br><span class="line"><span class="keyword">const</span> result = instance.render(); <span class="comment">// &lt;p&gt;Hello&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="React通过下面方式来判断组件的类型："><a href="#React通过下面方式来判断组件的类型：" class="headerlink" title="React通过下面方式来判断组件的类型："></a>React通过下面方式来判断组件的类型：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// React 内部</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Component</span> </span>&#123;&#125;</span><br><span class="line">Component.prototype.isReactComponent = &#123;&#125;;</span><br><span class="line"><span class="comment">// 检查方式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeting</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Greeting.prototype.isReactComponent); <span class="comment">// &#123;&#125;</span></span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/11/react-class-fc/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

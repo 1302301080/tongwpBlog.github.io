@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"tongwp.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这是一段博客描述的字段......">
-<meta property="og:type" content="website">
-<meta property="og:title" content="童大侠的博客">
-<meta property="og:url" content="https://tongwp.com/tags/typescript/index.html">
+  <meta name="description" content="React现在的渲染都是由Fiber来调度 Fiber调度过程中的两个阶段(以Render为界)  产生原因 Fiber之前的reconciler（被称为 Stack reconciler ）自顶向下的递归mount&#x2F;update，无法中断（持续占用主线程），这样主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，影响体验 渲染过程中没有优先级  React Fiber的方式 把一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Fiber">
+<meta property="og:url" content="https://tongwp.com/2021/05/11/react-fiber/index.html">
 <meta property="og:site_name" content="童大侠的博客">
-<meta property="og:description" content="这是一段博客描述的字段......">
+<meta property="og:description" content="React现在的渲染都是由Fiber来调度 Fiber调度过程中的两个阶段(以Render为界)  产生原因 Fiber之前的reconciler（被称为 Stack reconciler ）自顶向下的递归mount&#x2F;update，无法中断（持续占用主线程），这样主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，影响体验 渲染过程中没有优先级  React Fiber的方式 把一个">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-11T02:19:47.000Z">
+<meta property="article:modified_time" content="2021-05-11T02:22:23.195Z">
 <meta property="article:author" content="Ashton">
+<meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://tongwp.com/tags/typescript/">
+<link rel="canonical" href="https://tongwp.com/2021/05/11/react-fiber/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: typescript | 童大侠的博客</title>
+  <title>React Fiber | 童大侠的博客</title>
   
 
 
@@ -162,57 +165,212 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tongwp.com/2021/05/11/react-fiber/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Ashton">
+      <meta itemprop="description" content="这是一段博客描述的字段......">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="童大侠的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Fiber
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-05-11 10:19:47 / 修改时间：10:22:23" itemprop="dateCreated datePublished" datetime="2021-05-11T10:19:47+08:00">2021-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Js%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Js笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/05/11/react-fiber/" class="post-meta-item leancloud_visitors" data-flag-title="React Fiber" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">typescript
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/05/11/react-fiber/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/11/react-fiber/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>693</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <ul>
+<li>React现在的渲染都是由Fiber来调度</li>
+<li>Fiber调度过程中的两个阶段(以Render为界)</li>
+</ul>
+<h5 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h5><ol>
+<li>Fiber之前的reconciler（被称为 <del>Stack reconciler</del> ）自顶向下的递归<code>mount/update</code>，无法中断（持续占用主线程），这样主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，影响体验</li>
+<li>渲染过程中没有优先级</li>
+</ol>
+<h5 id="React-Fiber的方式"><a href="#React-Fiber的方式" class="headerlink" title="React Fiber的方式"></a>React Fiber的方式</h5><blockquote>
+<p>把一个耗时长的任务分成很多小片，每一个小片的运行时间很短，虽然总时间依然很长，但是在每个小片执行完之后，都给其他任务一个执行的机会，这样唯一的线程就不会被独占，其他任务依然有运行的机会</p>
+</blockquote>
+<blockquote>
+<p>React Fiber把更新过程碎片化，执行过程如下面的图所示，每执行完一段更新过程，就把控制权交还给React负责任务协调的模块，看看有没有其他紧急任务要做，如果没有就继续去更新，如果有紧急任务，那就去做紧急任务。</p>
+</blockquote>
+<p>维护每一个分片的数据结构，就是Fiber。</p>
+<h5 id="Fiber的调度过程分为以下两个阶段："><a href="#Fiber的调度过程分为以下两个阶段：" class="headerlink" title="Fiber的调度过程分为以下两个阶段："></a>Fiber的调度过程分为以下两个阶段：</h5><blockquote>
+<p><strong>render/reconciliation阶段</strong> ===&gt; 里面的所有生命周期函数都可能被执行多次，所以尽量保证状态不变</p>
+</blockquote>
+<ul>
+<li>componentWillMount</li>
+<li>componentWillReceiveProps</li>
+<li>shouldComponentUpdate</li>
+<li>componentWillUpdate</li>
+</ul>
+<blockquote>
+<p><strong>Commit阶段</strong> ===&gt; 不能被打断，只会执行一次</p>
+</blockquote>
+<ul>
+<li>componentDidMount</li>
+<li>componentDidUpdate</li>
+<li>compoenntWillunmount</li>
+</ul>
+<p><strong>总结</strong>：新的<code>Fiber</code> 分片处理任务，当有紧急任务的时候，可以去优先处理紧急任务然后再回来调用</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-07T17:46:55+08:00"
-              content="2021-05-07">
-          05-07
-        </time>
-      </div>
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/05/07/type_interface/" itemprop="url">
-            <span itemprop="name">Type与Interface区别</span>
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://github.com/1302301080">
+            <span class="icon">
+              <i class="fab fa-github"></i>
+            </span>
+
+            <span class="label">GitHub</span>
           </a>
-      </div>
+        </div>
 
-    </header>
-  </article>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://weibo.com/u/3867876515">
+            <span class="icon">
+              <i class="fab fa-weibo"></i>
+            </span>
 
+            <span class="label">Weibo</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://www.instagram.com/ashton_tung/">
+            <span class="icon">
+              <i class="fab fa-instagram"></i>
+            </span>
+
+            <span class="label">Instagram</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
     </div>
   </div>
-  
-  
-  
 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/11/react-class-fc/" rel="prev" title="类组件和函数组件的区别">
+      <i class="fa fa-chevron-left"></i> 类组件和函数组件的区别
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -259,6 +417,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#React-Fiber%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">React Fiber的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fiber%E7%9A%84%E8%B0%83%E5%BA%A6%E8%BF%87%E7%A8%8B%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E4%B8%A4%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">Fiber的调度过程分为以下两个阶段：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

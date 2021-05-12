@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"tongwp.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Type与Interface区别 可以在extend或Implements子句中命名接口，但是不能为对象类型文字提供类型别名。一个接口可以具有多个合并的声明，但是对象类型文字的类型别名不能。  type可以用于其它类型（联合类型、元组类型、基本类型[原始值]），interface不支持">
+  <meta name="description" content="介绍与创建型模式类似，工厂模式创建对象（视为工厂里的产品）时无需指定创建对象的具体类。 工厂模式定义一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类。而子类可以重写接口方法以便创建的时候指定自己的对象类型。 这个模式十分有用，尤其是创建对象的流程赋值的时候，比如依赖于很多设置文件等。并且，你会经常在程序里看到工厂方法，用于让子类类定义需要创建的对象类型。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Type与Interface区别">
-<meta property="og:url" content="https://tongwp.com/2021/05/07/type_interface/index.html">
+<meta property="og:title" content="设计模式-工厂模式">
+<meta property="og:url" content="https://tongwp.com/2021/03/12/factory-design-mode/index.html">
 <meta property="og:site_name" content="童大侠的博客">
-<meta property="og:description" content="Type与Interface区别 可以在extend或Implements子句中命名接口，但是不能为对象类型文字提供类型别名。一个接口可以具有多个合并的声明，但是对象类型文字的类型别名不能。  type可以用于其它类型（联合类型、元组类型、基本类型[原始值]），interface不支持">
+<meta property="og:description" content="介绍与创建型模式类似，工厂模式创建对象（视为工厂里的产品）时无需指定创建对象的具体类。 工厂模式定义一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类。而子类可以重写接口方法以便创建的时候指定自己的对象类型。 这个模式十分有用，尤其是创建对象的流程赋值的时候，比如依赖于很多设置文件等。并且，你会经常在程序里看到工厂方法，用于让子类类定义需要创建的对象类型。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-07T09:46:55.000Z">
-<meta property="article:modified_time" content="2021-05-07T10:02:08.340Z">
+<meta property="article:published_time" content="2021-03-12T02:44:55.000Z">
+<meta property="article:modified_time" content="2021-05-12T03:09:33.772Z">
 <meta property="article:author" content="Ashton">
-<meta property="article:tag" content="typescript">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://tongwp.com/2021/05/07/type_interface/">
+<link rel="canonical" href="https://tongwp.com/2021/03/12/factory-design-mode/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Type与Interface区别 | 童大侠的博客</title>
+  <title>设计模式-工厂模式 | 童大侠的博客</title>
   
 
 
@@ -172,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tongwp.com/2021/05/07/type_interface/">
+    <link itemprop="mainEntityOfPage" href="https://tongwp.com/2021/03/12/factory-design-mode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -185,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Type与Interface区别
+          设计模式-工厂模式
         </h1>
 
         <div class="post-meta">
@@ -194,10 +194,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-07 17:46:55 / 修改时间：18:02:08" itemprop="dateCreated datePublished" datetime="2021-05-07T17:46:55+08:00">2021-05-07</time>
+              <time title="创建时间：2021-03-12 10:44:55" itemprop="dateCreated datePublished" datetime="2021-03-12T10:44:55+08:00">2021-03-12</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-12 11:09:33" itemprop="dateModified" datetime="2021-05-12T11:09:33+08:00">2021-05-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -209,7 +215,7 @@
             </span>
 
           
-            <span id="/2021/05/07/type_interface/" class="post-meta-item leancloud_visitors" data-flag-title="Type与Interface区别" title="阅读次数">
+            <span id="/2021/03/12/factory-design-mode/" class="post-meta-item leancloud_visitors" data-flag-title="设计模式-工厂模式" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -224,8 +230,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/05/07/type_interface/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/07/type_interface/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/03/12/factory-design-mode/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/12/factory-design-mode/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -235,14 +241,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>851</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -254,21 +260,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Type与Interface区别"><a href="#Type与Interface区别" class="headerlink" title="Type与Interface区别"></a>Type与Interface区别</h3><blockquote>
-<p>可以在extend或Implements子句中命名接口，但是不能为对象类型文字提供类型别名。<br>一个接口可以具有多个合并的声明，但是对象类型文字的类型别名不能。</p>
-</blockquote>
-<p><code>type</code>可以用于其它类型（联合类型、元组类型、基本类型[原始值]），<code>interface</code>不支持</p>
+        <h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>与创建型模式类似，工厂模式创建对象（视为工厂里的产品）时无需指定创建对象的具体类。</p>
+<p>工厂模式定义一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类。而子类可以重写接口方法以便创建的时候指定自己的对象类型。</p>
+<p>这个模式十分有用，尤其是创建对象的流程赋值的时候，比如依赖于很多设置文件等。并且，你会经常在程序里看到工厂方法，用于让子类类定义需要创建的对象类型。</p>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> productManager = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">productManager.createProductA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;ProductA&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">productManager.createProductB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;ProductB&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">        </span><br><span class="line">productManager.factory = <span class="function"><span class="keyword">function</span> (<span class="params">typeType</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> productManager[typeType];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">productManager.factory(<span class="string">&quot;createProductA&quot;</span>);</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<h4 id="Type不同点"><a href="#Type不同点" class="headerlink" title="Type不同点"></a>Type不同点</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">type PartialPointX = &#123; <span class="attr">x</span>: number &#125;;</span><br><span class="line">type PartialPointY = &#123; <span class="attr">y</span>: number &#125;;</span><br><span class="line"><span class="comment">// union(联合)</span></span><br><span class="line">type PartialPoint = PartialPointX | PartialPointY;</span><br><span class="line"><span class="comment">// tuple(元祖)</span></span><br><span class="line">type Data = [PartialPointX, PartialPointY];</span><br><span class="line"><span class="comment">// primitive(原始值)</span></span><br><span class="line">type Name = <span class="built_in">Number</span>;</span><br><span class="line"><span class="comment">// typeof的返回值</span></span><br><span class="line"><span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">type B = <span class="keyword">typeof</span> div;</span><br></pre></td></tr></table></figure>
 
-<p><code>type</code>能使用<code>in</code>关键字生成映射类型， 但<code>interface</code>不行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type Keys = <span class="string">&#x27;firstname&#x27;</span> | <span class="string">&#x27;surname&#x27;</span></span><br><span class="line">type DudeType = &#123;</span><br><span class="line">  [key <span class="keyword">in</span> Keys]: string</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> test: DudeType = &#123;</span><br><span class="line">  firstname: <span class="string">&#x27;Lee sin&#x27;</span>,</span><br><span class="line">  surname: <span class="string">&#x27;jinx&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Interface不同点"><a href="#Interface不同点" class="headerlink" title="Interface不同点"></a>Interface不同点</h4><p><code>interface</code>可以多次定义，并被视为合并所有声明成员 <code>type</code>不支持</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface Point &#123;</span><br><span class="line">	x: number;</span><br><span class="line">&#125;</span><br><span class="line">interface Point &#123;</span><br><span class="line">	y: number;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> point: Point = &#123;<span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h4><ul>
-<li>都可以描述一个对象或者函数</li>
-<li>都可以进行拓展</li>
-</ul>
+<p>不理解的话，那我们就再详细一点咯，假如我们想在网页面里插入一些元素，而这些元素类型不固定，可能是图片，也有可能是连接，甚至可能是文本，根据工厂模式的定义，我们需要定义工厂类和相应的子类，我们先来定义子类的具体实现（也就是子函数）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> page = page || &#123;&#125;;</span><br><span class="line">page.dom = page.dom || &#123;&#125;;</span><br><span class="line"><span class="comment">//子函数1：处理文本</span></span><br><span class="line">page.dom.Text = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.insert = <span class="function"><span class="keyword">function</span> (<span class="params">where</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="built_in">this</span>.url);</span><br><span class="line">        where.appendChild(txt);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子函数2：处理链接</span></span><br><span class="line">page.dom.Link = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.insert = <span class="function"><span class="keyword">function</span> (<span class="params">where</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> link = <span class="built_in">document</span>.createElement(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">        link.href = <span class="built_in">this</span>.url;</span><br><span class="line">        link.appendChild(<span class="built_in">document</span>.createTextNode(<span class="built_in">this</span>.url));</span><br><span class="line">        where.appendChild(link);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子函数3：处理图片</span></span><br><span class="line">page.dom.Image = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.insert = <span class="function"><span class="keyword">function</span> (<span class="params">where</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> im = <span class="built_in">document</span>.createElement(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">        im.src = <span class="built_in">this</span>.url;</span><br><span class="line">        where.appendChild(im);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>那么我们如何定义工厂处理函数呢？其实很简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">page.dom.factory = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> page.dom[type];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = page.dom.factory(<span class="string">&#x27;Link&#x27;</span>);</span><br><span class="line">o.url = <span class="string">&#x27;http://www.cnblogs.com&#x27;</span>;</span><br><span class="line">o.insert(<span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+
+<p>至此，工厂模式的介绍相信大家都已经了然于心了，我就不再多叙述了。</p>
+<p><strong>什么时候使用工厂模式</strong></p>
+<p>以下几种情景下工厂模式特别有用：</p>
+<ol>
+<li>对象的构建十分复杂</li>
+<li>需要依赖具体环境创建不同实例</li>
+<li>处理大量具有相同属性的小对象</li>
+</ol>
+<p><strong>什么时候不该用工厂模式</strong></p>
+<p>不滥用运用工厂模式，有时候仅仅只是给代码增加了不必要的复杂度，同时使得测试难以运行下去。</p>
 
     </div>
 
@@ -327,7 +344,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/typescript/" rel="tag"># typescript</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
           </div>
 
         
@@ -336,13 +353,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/04/%E6%B5%8B%E8%AF%95%E5%8A%A0%E5%AF%86/" rel="prev" title="测试加密">
-      <i class="fa fa-chevron-left"></i> 测试加密
+    <a href="/2021/03/07/promise/" rel="prev" title="promise基础用法">
+      <i class="fa fa-chevron-left"></i> promise基础用法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/05/07/promise/" rel="next" title="promise基础用法">
-      promise基础用法 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -402,7 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Type%E4%B8%8EInterface%E5%8C%BA%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">Type与Interface区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Type%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="nav-number">1.1.</span> <span class="nav-text">Type不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interface%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">Interface不同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">相同点</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
